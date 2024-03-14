@@ -35,145 +35,116 @@ class complaine_details extends StatelessWidget {
         child: Column(
           children: [
             Flexible(
-              child: Column(
-                children: [
-                  Column(
-                    children: [
-                      Row(
-                        children: [
-                          Flexible(
-                            child: Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text('1. Status '),
-                                    Text(data['status'] ?? 'Value not available'),
-                                  ],
-                                ),
-                                customDivider(),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text('2.  Create Date '),
-                                    Text(data['create_date'] ??
-                                        'Value not available'),
-                                  ],
-                                ),
-                                customDivider(),
-
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text('3.  Create Time '),
-                                    Text(data['create_time'] ??
-                                        'Value not available'),
-                                  ],
-                                ),
-
-                                customDivider(),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text('4.  Complain NO '),
-                                    Text(data['compliant_no'] ??
-                                        'Value not available'),
-                                  ],
-                                ),
-
-
-                                customDivider(),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text('5.  Party Code '),
-                                    Text(data['party_code'] ??
-                                        'Value not available'),
-                                  ],
-                                ),
-                                customDivider(),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text('6.  Party Name '),
-                                    Text(data['party_id'] ??
-                                        'Value not available'),
-                                  ],
-                                ),
-                                customDivider(),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text('7.  Brand '),
-                                    Text(data['brand_id'] ??
-                                        'Value not available'),
-                                  ],
-                                ),
-                                customDivider(),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text('8.  Email ID '),
-                                    Text(data['email'] ??
-                                        'Value not available'),
-                                  ],
-                                ),
-                                customDivider(),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text('9.  Mobile No'),
-                                    Text(data['phone'] ??
-                                        'Value not available'),
-                                  ],
-                                ),
-
-                                customDivider(),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text('10. Description'),
-                                    Text(data['complaint'] ??
-                                        'Value not available'),
-                                  ],
-                                ),
-                                customDivider(),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text('11. City'),
-                                    Text(data['city_id'] ??
-                                        'Value not available'),
-                                  ],
-                                ),
-
-                                customDivider(),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text('12. State'),
-                                    Text(data['state'] ??
-                                        'Value not available'),
-                                  ],
-                                ),
-                                customDivider(),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text('13. Address'),
-                                    Text(data['address'] ??
-                                        'Value not available'),
-                                  ],
-                                ),
-                                customDivider(),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
+              child: Container(
+                margin: EdgeInsets.only(left: 16,right: 16),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('1. Status '),
+                        Text(data['status'] ?? 'Value not available'),
+                      ],
+                    ),
+                    customDivider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('2.  Create Date '),
+                        Text(data['create_date'] ?? 'Value not available'),
+                      ],
+                    ),
+                    customDivider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('3.  Create Time '),
+                        Text(data['create_time'] ?? 'Value not available'),
+                      ],
+                    ),
+                    customDivider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('4.  Complain NO '),
+                        Text(data['compliant_no'] ?? 'Value not available'),
+                      ],
+                    ),
+                    customDivider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('5.  Party Code '),
+                        Text(data['party_code'] ?? 'Value not available'),
+                      ],
+                    ),
+                    customDivider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('6.  Party Name '),
+                        Text(data['party_id'] ?? 'Value not available'),
+                      ],
+                    ),
+                    customDivider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('7.  Brand '),
+                        Text(data['brand_id'] ?? 'Value not available'),
+                      ],
+                    ),
+                    customDivider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('8.  Email ID '),
+                        Text(data['email'] ?? 'Value not available'),
+                      ],
+                    ),
+                    customDivider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('9.  Mobile No'),
+                        Text(data['phone'] ?? 'Value not available'),
+                      ],
+                    ),
+                    customDivider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('10. Description'),
+                        Text(data['complaint'] ?? 'Value not available'),
+                      ],
+                    ),
+                    customDivider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('11. City'),
+                        Text(data['city_id'] ?? 'Value not available'),
+                      ],
+                    ),
+                    customDivider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('12. State'),
+                        Text(data['state'] ?? 'Value not available'),
+                      ],
+                    ),
+                    customDivider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('13. Address'),
+                        Text(data['address'] ?? 'Value not available'),
+                      ],
+                    ),
+                    customDivider(),
+                  ],
+                ),
               ),
             ),
             Container(
@@ -185,8 +156,7 @@ class complaine_details extends StatelessWidget {
                       child: TextButton(
                         style: ButtonStyle(
                           backgroundColor:
-                          MaterialStateProperty.all<Color>(
-                              Colors.blue),
+                              MaterialStateProperty.all<Color>(Colors.blue),
                         ),
                         onPressed: () {
                           Navigator.push(

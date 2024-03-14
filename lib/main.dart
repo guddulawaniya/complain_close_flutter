@@ -23,11 +23,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Complain Close',
-      // initialRoute: "/upload",
+      initialRoute: "splash",
       routes: {
         'splash': (context) => splashScreen(),
         '/login': (context) => loginpage(),
-        '/mainepage': (context) => MyApp(),
+        '/mainepage': (context) => MyHomePage(title: 'home page',),
         '/otppage': (context) => otp_verification(),
         '/formpage': (context) => complaine_form(),
         '/upload': (context) => uploaddata(),
@@ -36,6 +36,20 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlueAccent),
         useMaterial3: true,
       ),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key, required this.title});
+
+  final String title;
+
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: DefaultTabController(
         length: 3,
         child: Scaffold(
@@ -49,13 +63,13 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(
             backgroundColor: Colors.blue,
             title: Text('Complain Dashboard',style: TextStyle(
-              fontSize: 18,
-              color: Colors.white
+                fontSize: 18,
+                color: Colors.white
             ),),
             bottom: TabBar(
               labelColor: Colors.white,
               unselectedLabelColor: Colors.white60,
-                indicatorSize: TabBarIndicatorSize.tab,
+              indicatorSize: TabBarIndicatorSize.tab,
               tabs: [
                 Tab(text: 'Current'),
                 Tab(text: 'Total'),
@@ -127,7 +141,7 @@ class MyApp extends StatelessWidget {
                 ListTile(
                   title: TextButton(
                     onPressed: () {
-                      Navigator.pushReplacement(
+                      Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => currentpage()),
                       );
@@ -149,12 +163,12 @@ class MyApp extends StatelessWidget {
                 ),
                 ListTile(
                   title: TextButton(
-                     onPressed: () {
-                       Navigator.pushReplacement(
-                         context,
-                         MaterialPageRoute(builder: (context) => total_complain()),
-                       );
-                     }, child: Text('Close Complains',
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => total_complain()),
+                      );
+                    }, child: Text('Close Complains',
                     style: TextStyle(
                         color: Colors.black87, fontWeight: FontWeight.bold),),
                   ),
@@ -198,7 +212,7 @@ class MyApp extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => splashScreen()),
+                MaterialPageRoute(builder: (context) => complaine_form()),
               );
             },
             child: const Icon(Icons.add),
@@ -209,20 +223,3 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-    );
-  }
-}

@@ -93,6 +93,7 @@ class _currentpageState extends State<currentpage> {
                               vertical: 8,
                             ),
                             color: Colors.white,
+                            surfaceTintColor: Colors.white,
                             child: Padding(
                               padding: EdgeInsets.all(8.0),
                               child: Row(

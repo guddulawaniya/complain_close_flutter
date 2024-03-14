@@ -81,6 +81,7 @@ class _total_complainState extends State<total_complain> {
                           horizontal: 16,
                           vertical: 8,
                         ),
+                        surfaceTintColor: Colors.white,
                         color: Colors.white,
                         child: Padding(
                           padding: EdgeInsets.all(8.0),

@@ -16,36 +16,49 @@ class total_complain extends StatefulWidget {
 class _total_complainState extends State<total_complain> {
 
   List<dynamic> dataList = [];
+  late String complainid;
 
   @override
   void initState() {
     super.initState();
-    fetchData(); // Fetch data when widget initializes
+    fetchData('https://dummy-crm.raghaw.in/api/getcomplaint.php'); // Fetch data when widget initializes
+    // Fetch data when widget initializes
   }
 
-  Future<void> fetchData() async {
-    final response = await http
-        .get(Uri.parse('https://dummy-crm.raghaw.in/api/getcomplaint.php'));
-    // .get(Uri.parse('https://jsonplaceholder.typicode.com/posts'));
+  Future<void> fetchData(String url) async {
 
-    if (response.statusCode == 200) {
-      // If the server returns a 200 OK response, parse the JSON
-      Fluttertoast.showToast(msg: "Successfully fetched data");
-      setState(() {
-        dataList = json.decode(response.body); // Set received data into the list
-      });
-    } else {
-      Fluttertoast.showToast(msg: "error");
-      // If the server did not return a 200 OK response, throw an error
-      throw Exception('Failed to load data');
+    // final url = 'https://dummy-crm.raghaw.in/api/get_item_details_close.php?complaint_id=SM202423722';
+
+    try {
+
+      print('Fetching data from: $url');
+      final response = await http.get(Uri.parse(url));
+      print('Response status code: ${response.statusCode}');
+      print('Response body: ${response.body}');
+
+      if (response.statusCode == 200) {
+        Fluttertoast.showToast(msg: "Successfully fetched data");
+        setState(() {
+          dataList = json.decode(response.body);
+        });
+      } else {
+        Fluttertoast.showToast(
+            msg: "Error: ${response.statusCode}",
+            toastLength: Toast.LENGTH_LONG);
+        throw Exception('Failed to load data');
+      }
+    }catch (e) {
+      Fluttertoast.showToast(msg: "Catch Error: $e");
     }
+
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
         body: dataList.isEmpty
-            ? Center(child: CircularProgressIndicator())
+            ? const Center(child: CircularProgressIndicator())
             : ListView.builder(
           itemCount: dataList.length,
           itemBuilder: (context, index) {
@@ -67,97 +80,101 @@ class _total_complainState extends State<total_complain> {
                 //   // Fluttertoast.showToast(msg: "item : $index", toastLength: Toast.LENGTH_LONG);
               },
 
-              child: Flexible(
-                child: Column(
-                  children: [
-                    if(dataList[index]["compliant_no"] != null && dataList[index]["compliant_no"].toString().isNotEmpty)
-                      Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                        ),
+              child: Column(
+                children: [
+                  Flexible(
+                    child: Column(
+                      children: [
+                        if(dataList[index]["compliant_no"] != null && dataList[index]["compliant_no"].toString().isNotEmpty)
+                          Card(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
 
-                        elevation: 4,
-                        margin: EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 8,
-                        ),
-                        surfaceTintColor: Colors.white,
-                        color: Colors.white,
-                        child: Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Row(
-                            children: [
-                              Flexible(
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      "Status",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black87,
-                                        fontSize: 14,
-                                      ),
-                                    ),
-                                    Card(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(8.0),
-                                      ),
-                                      elevation: 4,
-                                      margin: EdgeInsets.symmetric(
-                                        horizontal: 16,
-                                        vertical: 8,
-                                      ),
-                                      color: Colors.white,
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                            padding: EdgeInsets.only(
-                                                left: 5,
-                                                top: 2,
-                                                right: 5,
-                                                bottom: 2),
-                                            decoration: BoxDecoration(
-                                                color: Colors.orangeAccent,
-                                                borderRadius: BorderRadius.only(
-                                                  topLeft: Radius.circular(10),
-                                                  topRight: Radius.circular(10),
-                                                )),
-                                            // margin: EdgeInsets.only(top: 5),
-                                            child: Text(
-                                              "Pending",
-                                              style: TextStyle(color: Colors.white),
-                                            ),
+                            elevation: 4,
+                            margin: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 8,
+                            ),
+                            surfaceTintColor: Colors.white,
+                            color: Colors.white,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                children: [
+                                  Flexible(
+                                    child: Column(
+                                      children: [
+                                        const Text(
+                                          "Status",
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black87,
+                                            fontSize: 14,
                                           ),
-                                          SizedBox(
-                                              height: 40,
-                                              width: 40,
-                                              child: Icon(Icons.update))
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
+                                        ),
+                                        Card(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(8.0),
+                                          ),
+                                          elevation: 4,
+                                          margin: const EdgeInsets.symmetric(
+                                            horizontal: 16,
+                                            vertical: 8,
+                                          ),
+                                          surfaceTintColor: Colors.white,
+                                          color: Colors.white,
+                                          child: Column(
+                                            children: [
+                                              Container(
+                                                padding: const EdgeInsets.only(
+                                                    left: 5,
+                                                    top: 2,
+                                                    right: 5,
+                                                    bottom: 2),
+                                                decoration: const BoxDecoration(
+                                                    color: Colors.orangeAccent,
+                                                    borderRadius: BorderRadius.only(
+                                                      topLeft: Radius.circular(10),
+                                                      topRight: Radius.circular(10),
+                                                    )),
+                                                // margin: EdgeInsets.only(top: 5),
+                                                child: const Text(
+                                                  "Pending",
+                                                  style: TextStyle(color: Colors.white),
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                  height: 40,
+                                                  width: 40,
+                                                  child: Icon(Icons.update))
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  Flexible(
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+
+                                        Text('Complaint No : ${dataList[index]["compliant_no"]}'),
+                                        Text('Date : ${dataList[index]["create_date"]}'),
+                                        Text('Party Name : ${dataList[index]['party_id']}'),
+                                        Text('Address : ${dataList[index]['address']}', maxLines: 1,),
+
+                                      ],
+                                    ),
+                                  ),
+                                ],
                               ),
-                              Flexible(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-
-
-                                    Text('Complaint No : ${dataList[index]["compliant_no"]}'),
-                                    Text('Date : ${dataList[index]["create_date"]}'),
-                                    Text('Party Name : ${dataList[index]['party_id']}'),
-                                    Text('Address : ${dataList[index]['address']}', maxLines: 1,),
-
-                                  ],
-                                ),
-                              ),
-                            ],
+                            ),
                           ),
-                        ),
-                      ),
-                  ],
-                ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             );
           },

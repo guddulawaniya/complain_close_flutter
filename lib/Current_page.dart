@@ -56,52 +56,54 @@ class _currentpageState extends State<currentpage> {
     return Scaffold(
         backgroundColor: Colors.white,
         body: dataList.isEmpty
-            ? Center(child: CircularProgressIndicator())
+            ? const Center(child: CircularProgressIndicator())
             : ListView.builder(
-                itemCount: dataList.length,
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => complaine_details(data: dataList[index]),
-                        ),
-                      );
+          itemCount: dataList.length,
+          itemBuilder: (context, index) {
+            return GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => complaine_details(data: dataList[index]),
+                  ),
+                );
 
-                    //   Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(builder: (context) => complaine_details()),arguments: dataList[index]
-                    //   );
-                    //   // Handle item click here
-                    //   // print('Item $index clicked');
-                    //   // Fluttertoast.showToast(msg: "item : $index", toastLength: Toast.LENGTH_LONG);
-                    },
+                //   Navigator.push(
+                //     context,
+                //     MaterialPageRoute(builder: (context) => complaine_details()),arguments: dataList[index]
+                //   );
+                //   // Handle item click here
+                //   // print('Item $index clicked');
+                //   // Fluttertoast.showToast(msg: "item : $index", toastLength: Toast.LENGTH_LONG);
+              },
 
-                    child: Flexible(
-                      child: Column(
-                        children: [
-                          if(dataList[index]["compliant_no"] != null && dataList[index]["compliant_no"].toString().isNotEmpty)
+              child: Column(
+                children: [
+                  Flexible(
+                    child: Column(
+                      children: [
+                        if(dataList[index]["compliant_no"] != null && dataList[index]["compliant_no"].toString().isNotEmpty)
                           Card(
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5.0),
                             ),
 
                             elevation: 4,
-                            margin: EdgeInsets.symmetric(
+                            margin: const EdgeInsets.symmetric(
                               horizontal: 16,
-                              vertical: 8,
+                              vertical: 16,
                             ),
-                            color: Colors.white,
                             surfaceTintColor: Colors.white,
+                            color: Colors.white,
                             child: Padding(
-                              padding: EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(8.0),
                               child: Row(
                                 children: [
                                   Flexible(
                                     child: Column(
                                       children: [
-                                        Text(
+                                        const Text(
                                           "Status",
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
@@ -114,32 +116,33 @@ class _currentpageState extends State<currentpage> {
                                             borderRadius: BorderRadius.circular(8.0),
                                           ),
                                           elevation: 4,
-                                          margin: EdgeInsets.symmetric(
+                                          margin: const EdgeInsets.symmetric(
                                             horizontal: 16,
                                             vertical: 8,
                                           ),
+                                          surfaceTintColor: Colors.white,
                                           color: Colors.white,
                                           child: Column(
                                             children: [
                                               Container(
-                                                padding: EdgeInsets.only(
+                                                padding: const EdgeInsets.only(
                                                     left: 5,
                                                     top: 2,
                                                     right: 5,
                                                     bottom: 2),
-                                                decoration: BoxDecoration(
+                                                decoration: const BoxDecoration(
                                                     color: Colors.orangeAccent,
                                                     borderRadius: BorderRadius.only(
                                                       topLeft: Radius.circular(10),
                                                       topRight: Radius.circular(10),
                                                     )),
                                                 // margin: EdgeInsets.only(top: 5),
-                                                child: Text(
+                                                child: const Text(
                                                   "Pending",
                                                   style: TextStyle(color: Colors.white),
                                                 ),
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                   height: 40,
                                                   width: 40,
                                                   child: Icon(Icons.update))
@@ -149,29 +152,28 @@ class _currentpageState extends State<currentpage> {
                                       ],
                                     ),
                                   ),
-                                  Flexible(
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
+                                   Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
 
+                                      Text('Complaint No : ${dataList[index]["compliant_no"]}', overflow: TextOverflow.ellipsis,),
+                                      Text('Date : ${dataList[index]["create_date"]}', overflow: TextOverflow.ellipsis),
+                                      Text('Party Name : ${dataList[index]['party_id']}', overflow: TextOverflow.ellipsis),
+                                      Text('Address : ${dataList[index]['address']}', maxLines: 1, overflow: TextOverflow.ellipsis),
 
-                                        Text('Complaint No : ${dataList[index]["compliant_no"]}'),
-                                        Text('Date : ${dataList[index]["create_date"]}'),
-                                        Text('Party Name : ${dataList[index]['party_id']}'),
-                                        Text('Address : ${dataList[index]['address']}', maxLines: 1,),
-
-                                      ],
-                                    ),
+                                    ],
                                   ),
                                 ],
                               ),
                             ),
                           ),
-                        ],
-                      ),
+                      ],
                     ),
-                  );
-                },
-              ));
+                  ),
+                ],
+              ),
+            );
+          },
+        ));
   }
 }

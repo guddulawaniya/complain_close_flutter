@@ -4,7 +4,7 @@ class CustomAutocomplete extends StatefulWidget {
   final String text;
   final String hinttext;
 
-  CustomAutocomplete({required this.text, required this.hinttext});
+  const CustomAutocomplete({super.key, required this.text, required this.hinttext});
 
   @override
   _CustomAutocompleteState createState() => _CustomAutocompleteState();
@@ -24,20 +24,20 @@ class _CustomAutocompleteState extends State<CustomAutocomplete> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 8, bottom: 8),
+      margin: const EdgeInsets.only(top: 8, bottom: 8),
       child: Column(
         children: [
           Row(
             children: [
               Text(
                 widget.text,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.normal,
                   color: Colors.black,
                 ),
               ),
-              Text(
+              const Text(
                 "*",
                 style: TextStyle(
                   fontSize: 14,
@@ -47,11 +47,11 @@ class _CustomAutocompleteState extends State<CustomAutocomplete> {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 2,
           ),
           Container(
-            padding: EdgeInsets.only(left: 10,right: 10),
+            padding: const EdgeInsets.only(left: 10,right: 10),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey),
               borderRadius: BorderRadius.circular(5.0),
@@ -61,13 +61,13 @@ class _CustomAutocompleteState extends State<CustomAutocomplete> {
               value: dropdownvalue,
               underline: Container(),
               icon: const Icon(Icons.keyboard_arrow_down),
-              style: TextStyle(
+              style: const TextStyle(
                   color: Colors.black
 
               ),
               isExpanded: true,
-              hint: Text('select'),
-              borderRadius: BorderRadius.all(Radius.circular(10)),
+              hint: const Text('select'),
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
               items: items.map((String items) {
                 return DropdownMenuItem(
                   value: items,

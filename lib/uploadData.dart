@@ -61,175 +61,173 @@ class _uploaddataState extends State<uploaddata> {
           style: TextStyle(fontSize: 14),
         ),
       ),
-      body: Flexible(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Flexible(
-              child: SingleChildScrollView(
-                child: Container(
-                  margin: EdgeInsets.only(left: 16, right: 16),
-                  child: Column(
-                    children: [
-                      Card.outlined(
-                        elevation: 5,
-                        surfaceTintColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          side: BorderSide(
-                            color: Colors.grey, // Specify the border color here
-                            width: 1.0, // Specify the border width here
-                          ),
-                        ),
-                        child: Container(
-                          margin: EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              CustomAutocomplete(
-                                  text: 'Group Name', hinttext: 'Select'),
-                              CustomAutocomplete(
-                                  text: 'Item Name', hinttext: 'Select'),
-                              CustomTextView(
-                                  text: 'item Quantity',
-                                  hinttext: 'Enter Quantity'),
-                              CustomTextView(
-                                  text: 'Serial No',
-                                  hinttext: 'Enter Serial No'),
-                            ],
-                          ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Flexible(
+            child: SingleChildScrollView(
+              child: Container(
+                margin: EdgeInsets.only(left: 16, right: 16),
+                child: Column(
+                  children: [
+                    Card.outlined(
+                      elevation: 5,
+                      surfaceTintColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        side: BorderSide(
+                          color: Colors.grey, // Specify the border color here
+                          width: 1.0, // Specify the border width here
                         ),
                       ),
-                      SizedBox(height: 15),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Flexible(
-                            child: Container(
-                                padding: EdgeInsets.only(
-                                    left: 6, right: 6, top: 3, bottom: 3),
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  border: Border.all(
-                                      color: CupertinoColors.systemBlue,
-                                      width: 1),
-                                ),
-                                child: TextButton(
-                                  onPressed: () {},
-                                  child: Text(
-                                    'Upload Item',
-                                    style: TextStyle(
-                                        color: Colors.black87, fontSize: 14),
-                                  ),
-                                )),
-                          ),
-                          Flexible(
-                            child: Container(
-                                padding: EdgeInsets.only(
-                                    left: 6, right: 6, top: 3, bottom: 3),
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  border: Border.all(
-                                      color: CupertinoColors.systemBlue,
-                                      width: 1),
-                                ),
-                                child: TextButton(
-                                  onPressed: () {},
-                                  style: ButtonStyle(),
-                                  child: Text(
-                                    'View Item',
-                                    style: TextStyle(
-                                        color: Colors.black87, fontSize: 14),
-                                  ),
-                                )),
-                          ),
-                        ],
+                      child: Container(
+                        margin: EdgeInsets.all(10),
+                        child: Column(
+                          children: [
+                            CustomAutocomplete(
+                                text: 'Group Name', hinttext: 'Select'),
+                            CustomAutocomplete(
+                                text: 'Item Name', hinttext: 'Select'),
+                            CustomTextView(
+                                text: 'item Quantity',
+                                hinttext: 'Enter Quantity'),
+                            CustomTextView(
+                                text: 'Serial No',
+                                hinttext: 'Enter Serial No'),
+                          ],
+                        ),
                       ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Column(
-                        children: [
-                          Container(
-                              width: double.infinity,
-                              height: double.tryParse('200'),
-                              child: dataList.isEmpty
-                                  ? Center(child: CircularProgressIndicator())
-                                  : ListView.builder(
-                                      itemCount: dataList.length,
-                                      itemBuilder: (context, index) {
-                                        indexshow = index;
-                                        indexshow++;
-                                        return Card(
-                                          elevation: 3,
-                                          surfaceTintColor: Colors.white,
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                              side: BorderSide(
-                                                  color: Colors.grey,
-                                                  width: 1)),
-                                          child: Container(
-                                            padding: EdgeInsets.all(10),
-                                            child: Text('$indexshow. ' +
-                                                dataList[index]['item_name']),
-                                          ),
-                                        );
-                                      },
-                                    )),
-                        ],
-                      )
-                    ],
-                  ),
+                    ),
+                    SizedBox(height: 15),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Flexible(
+                          child: Container(
+                              padding: EdgeInsets.only(
+                                  left: 6, right: 6, top: 3, bottom: 3),
+                              decoration: BoxDecoration(
+                                borderRadius:
+                                BorderRadius.all(Radius.circular(10)),
+                                border: Border.all(
+                                    color: CupertinoColors.systemBlue,
+                                    width: 1),
+                              ),
+                              child: TextButton(
+                                onPressed: () {},
+                                child: Text(
+                                  'Upload Item',
+                                  style: TextStyle(
+                                      color: Colors.black87, fontSize: 14),
+                                ),
+                              )),
+                        ),
+                        Flexible(
+                          child: Container(
+                              padding: EdgeInsets.only(
+                                  left: 6, right: 6, top: 3, bottom: 3),
+                              decoration: BoxDecoration(
+                                borderRadius:
+                                BorderRadius.all(Radius.circular(10)),
+                                border: Border.all(
+                                    color: CupertinoColors.systemBlue,
+                                    width: 1),
+                              ),
+                              child: TextButton(
+                                onPressed: () {},
+                                style: ButtonStyle(),
+                                child: Text(
+                                  'View Item',
+                                  style: TextStyle(
+                                      color: Colors.black87, fontSize: 14),
+                                ),
+                              )),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Column(
+                      children: [
+                        Container(
+                            width: double.infinity,
+                            height: double.tryParse('200'),
+                            child: dataList.isEmpty
+                                ? Center(child: CircularProgressIndicator())
+                                : ListView.builder(
+                              itemCount: dataList.length,
+                              itemBuilder: (context, index) {
+                                indexshow = index;
+                                indexshow++;
+                                return Card(
+                                  elevation: 3,
+                                  surfaceTintColor: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                      BorderRadius.circular(10),
+                                      side: BorderSide(
+                                          color: Colors.grey,
+                                          width: 1)),
+                                  child: Container(
+                                    padding: EdgeInsets.all(10),
+                                    child: Text('$indexshow. ' +
+                                        dataList[index]['item_name']),
+                                  ),
+                                );
+                              },
+                            )),
+                      ],
+                    )
+                  ],
                 ),
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              margin: EdgeInsets.only(left: 20, right: 20, bottom: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Flexible(
-                    child: Container(
-                      margin: EdgeInsets.only(right: 10),
-                      width: double.tryParse('300'),
-                      child: TextButton(
-                          onPressed: () {},
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateColor.resolveWith(
-                                  (states) => Colors.blue)),
-                          child: Text(
-                            'Previous',
-                            style: TextStyle(
-                                color: CupertinoColors.white, fontSize: 15),
-                          )),
-                    ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            margin: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flexible(
+                  child: Container(
+                    margin: EdgeInsets.only(right: 10),
+                    width: double.tryParse('300'),
+                    child: TextButton(
+                        onPressed: () {},
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateColor.resolveWith(
+                                    (states) => Colors.blue)),
+                        child: Text(
+                          'Previous',
+                          style: TextStyle(
+                              color: CupertinoColors.white, fontSize: 15),
+                        )),
                   ),
-                  Flexible(
-                    child: Container(
-                      margin: EdgeInsets.only(left: 10),
-                      width: double.tryParse('300'),
-                      child: TextButton(
-                          onPressed: () {},
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateColor.resolveWith(
-                                  (states) => Colors.blue)),
-                          child: Text(
-                            'Submit',
-                            style: TextStyle(
-                                color: CupertinoColors.white, fontSize: 15),
-                          )),
-                    ),
-                  )
-                ],
-              ),
-            )
-          ],
-        ),
+                ),
+                Flexible(
+                  child: Container(
+                    margin: EdgeInsets.only(left: 10),
+                    width: double.tryParse('300'),
+                    child: TextButton(
+                        onPressed: () {},
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateColor.resolveWith(
+                                    (states) => Colors.blue)),
+                        child: Text(
+                          'Submit',
+                          style: TextStyle(
+                              color: CupertinoColors.white, fontSize: 15),
+                        )),
+                  ),
+                )
+              ],
+            ),
+          )
+        ],
       ),
     );
   }

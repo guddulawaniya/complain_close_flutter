@@ -1,5 +1,6 @@
 import 'package:complain_close_flutter/otp_verification.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class loginpage extends StatefulWidget {
   const loginpage({super.key});
@@ -9,11 +10,32 @@ class loginpage extends StatefulWidget {
 }
 
 class _loginpageState extends State<loginpage> {
+
+  TextEditingController mobiletextcontroller = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  bool isnumberValid = true;
+
+  @override
+  void dispose() {
+    mobiletextcontroller.dispose();
+    super.dispose();
+  }
+
+  void _saveData() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('mobilenumber', mobiletextcontroller.text.toString()); // Save string data
+    // You can also save other types of data like int, double, bool, etc.
+    // await prefs.setInt('intKey', 123);
+    // await prefs.setDouble('doubleKey', 3.14);
+    // await prefs.setBool('boolKey', true);
+    print('Data saved successfully');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        margin: EdgeInsets.all(16),
+        margin: const EdgeInsets.all(16),
         width: double.infinity,
         height: double.infinity,
         child: Column(
@@ -21,27 +43,27 @@ class _loginpageState extends State<loginpage> {
           children: [
             Column(
               children: [
+                const SizedBox(height: 100
+                  ,),
 
-                Icon(
+                const Icon(
                   Icons.person_3_outlined,
                   size: 100,
                 ),
-                Text(
+                const Text(
                   "COMPLAINT",
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
                       color: Colors.lightBlue),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                SizedBox(
+                const SizedBox(
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-
-
                         Text(
                           "Login",
                           style: TextStyle(
@@ -59,15 +81,46 @@ class _loginpageState extends State<loginpage> {
 
                   ),
                 ),
-                SizedBox(height: 20,),
-                TextField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintStyle: TextStyle(color: Colors.black38),
-                    labelStyle: TextStyle(color: Colors.lightBlue),
-                    hintText: 'Mobile Number',
-                    labelText: 'Mobile Number',
+                const SizedBox(height: 20,),
+                Form(
+
+                  key: _formKey,
+                  child: TextFormField(
+                    controller: mobiletextcontroller,
+                    maxLength: 10,
+                    keyboardType: TextInputType.number,
+                    onChanged: (text) {
+                      isnumberValid = true;
+                    },
+
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        setState(() {
+                          isnumberValid = false;
+                        });
+                        return 'Enter Mobile Number';
+                      }
+                      return null;
+                      // Return null if the validation is successful.
+                    },
+
+                    decoration: const InputDecoration(
+                      counter: Text(""),
+                      prefixText: "+91",
+                      // contentPadding: EdgeInsets.only(right: 10),
+                      prefixStyle: TextStyle(
+                          color: Colors.blue,
+                          fontSize: 16
+                      ),
+                      border: OutlineInputBorder(),
+                      hintStyle: TextStyle(color: Colors.black38),
+                      labelStyle: TextStyle(color: Colors.lightBlue),
+                      hintText: 'Mobile Number',
+                      labelText: 'Mobile Number',
+                    ),
+
                   ),
+
                 ),
               ],
             ),
@@ -80,13 +133,17 @@ class _loginpageState extends State<loginpage> {
                       backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
                     ),
                     onPressed: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => otp_verification()),
-                      );
+                      if(_formKey.currentState!.validate()){
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => const otp_verification()),
+                        );
+
+                      }
+
 
                     },
-                    child: Text('Send OTP',style: TextStyle(
+                    child: const Text('Send OTP',style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),),

@@ -102,6 +102,7 @@ class MyHomePage extends StatelessWidget {
             ],
           ),
           drawer: Drawer(
+            backgroundColor: Colors.white,
             child: ListView(
               children: [
                 DrawerHeader(
@@ -118,38 +119,26 @@ class MyHomePage extends StatelessWidget {
                 ),
                 ListTile(
                   leading: Icon(Icons.person_2_outlined, color: Colors.black38),
-                  title: TextButton(
-                    onPressed: () {
-
-                      // Navigator.pushReplacement(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) => otp_verification()),
-                      // );
-
-                    }, child: Text( 'My Profile',
-                    style: TextStyle(
-                        color: Colors.black87, fontWeight: FontWeight.bold),),
-                  ),
+                  title: Text( 'My Profile',
+                        style: TextStyle(
+                            color: Colors.black87, fontWeight: FontWeight.bold),),
                   trailing: Icon(
                     Icons.arrow_forward_ios,
                     color: Colors.black38,
                   ),
                   onTap: () {
-                    // Handle navigation for item 1
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => currentpage()),
+                    );
                   },
                 ),
                 ListTile(
-                  title: TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => currentpage()),
-                      );
+                  title: Text( 'Status',
 
-                    }, child: Text( 'Status',
                     style: TextStyle(
                         color: Colors.black87, fontWeight: FontWeight.bold),),
-                  ),
                   leading:
                   Icon(Icons.question_mark_outlined, color: Colors.black38),
                   // Widget to be displayed on the left
@@ -159,19 +148,17 @@ class MyHomePage extends StatelessWidget {
                   ),
                   onTap: () {
                     // Handle navigation for item 2
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => currentpage()),);
+
                   },
                 ),
                 ListTile(
-                  title: TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => total_complain()),
-                      );
-                    }, child: Text('Close Complains',
+                  title: Text('Close Complains',
+
                     style: TextStyle(
                         color: Colors.black87, fontWeight: FontWeight.bold),),
-                  ),
                   leading: Icon(Icons.done_outline, color: Colors.black38),
                   trailing: Icon(
                     Icons.arrow_forward_ios,
@@ -179,6 +166,10 @@ class MyHomePage extends StatelessWidget {
                   ),
                   onTap: () {
                     // Handle navigation for item 2
+                    // Handle navigation for item 2
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => total_complain()),);
                   },
                 ),
                 ListTile(
@@ -190,17 +181,13 @@ class MyHomePage extends StatelessWidget {
                     Icons.arrow_forward_ios,
                     color: Colors.black38,
                   ),
-                  title: TextButton(
-                    onPressed: () {
-                      // Navigator.pushReplacement(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) => otp_verification()),
-                      // );
-                    }, child: Text(  'Terms & Condition',style: TextStyle(
+                  title: Text(  'Terms & Condition',style: TextStyle(
                       color: Colors.black87, fontWeight: FontWeight.bold),),
-                  ),
                   onTap: () {
                     // Handle navigation for item 2
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => total_complain()),);
                   },
                 ),
                 // Add more list items as needed
@@ -209,6 +196,7 @@ class MyHomePage extends StatelessWidget {
           ),
 
           floatingActionButton: FloatingActionButton(
+            backgroundColor: Colors.white,
             onPressed: () {
               Navigator.push(
                 context,

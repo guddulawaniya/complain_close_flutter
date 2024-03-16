@@ -15,20 +15,23 @@ class _complaine_formState extends State<complaine_form> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Update Complaint',
           style: TextStyle(fontSize: 14),
         ),
       ),
-      body: Flexible(
+      body: Container(
+        decoration: BoxDecoration(
+            color: Colors.white
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Flexible(
               child: SingleChildScrollView(
                 child: Container(
-                  margin: EdgeInsets.all(16),
-                  child: Column(
+                  margin: const EdgeInsets.all(16),
+                  child: const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CustomTextView(
@@ -81,7 +84,7 @@ class _complaine_formState extends State<complaine_form> {
               ),
             ),
             Container(
-                margin: EdgeInsets.all(16),
+                margin: const EdgeInsets.all(16),
                 child: Column(
                   children: [
                     SizedBox(
@@ -89,16 +92,16 @@ class _complaine_formState extends State<complaine_form> {
                       child: TextButton(
                         style: ButtonStyle(
                           backgroundColor:
-                              MaterialStateProperty.all<Color>(Colors.blue),
+                          MaterialStateProperty.all<Color>(Colors.blue),
                         ),
                         onPressed: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => uploaddata()),
+                                builder: (context) => const uploaddata()),
                           );
                         },
-                        child: Text(
+                        child: const Text(
                           'Next',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,

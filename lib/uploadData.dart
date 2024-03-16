@@ -63,10 +63,12 @@ class _uploaddataState extends State<uploaddata> {
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
         children: [
           Flexible(
             child: SingleChildScrollView(
               child: Container(
+                color: Colors.white,
                 margin: EdgeInsets.only(left: 16, right: 16),
                 child: Column(
                   children: [

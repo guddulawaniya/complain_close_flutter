@@ -36,7 +36,7 @@ class _splash_screenState extends State<splashScreen> with TickerProviderStateMi
     Timer(
         Duration(seconds: 3), () => Navigator.pushReplacement(context,
         PageTransition(
-            type: PageTransitionType.topToBottom,
+            type: PageTransitionType.rightToLeft,
             child: loginpage())));
   }
 

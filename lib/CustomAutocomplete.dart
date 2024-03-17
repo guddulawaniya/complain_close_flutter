@@ -3,30 +3,32 @@ import 'package:flutter/material.dart';
 class CustomAutocomplete extends StatefulWidget {
   final String text;
   final String hinttext;
+  final List<String> items;
 
-  const CustomAutocomplete({super.key, required this.text, required this.hinttext});
+  const CustomAutocomplete({
+    Key? key,
+    required this.text,
+    required this.hinttext,
+    required this.items,
+  }) : super(key: key);
 
   @override
   _CustomAutocompleteState createState() => _CustomAutocompleteState();
 }
 
 class _CustomAutocompleteState extends State<CustomAutocomplete> {
-  String dropdownvalue = 'Item 1'; // Initial value
+  late String dropdownvalue; // Initial value
 
-  var items = [
-    'Item 1',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-    'Item 5',
-  ];
 
   @override
   Widget build(BuildContext context) {
+    dropdownvalue = widget.items[0];
     return Container(
       margin: const EdgeInsets.only(top: 8, bottom: 8),
       child: Column(
+
         children: [
+
           Row(
             children: [
               Text(
@@ -51,35 +53,36 @@ class _CustomAutocompleteState extends State<CustomAutocomplete> {
             height: 2,
           ),
           Container(
-            padding: const EdgeInsets.only(left: 10,right: 10),
+            padding: const EdgeInsets.only(left: 10, right: 10),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey),
               borderRadius: BorderRadius.circular(5.0),
             ),
             width: double.infinity,
-            child: DropdownButton(
-              value: dropdownvalue,
+            child: DropdownButton<String>(
+              value: dropdownvalue, // Use the dropdownvalue variable
               underline: Container(),
               icon: const Icon(Icons.keyboard_arrow_down),
               style: const TextStyle(
-                  color: Colors.black
-
+                color: Colors.black,
               ),
               isExpanded: true,
               hint: const Text('select'),
               borderRadius: const BorderRadius.all(Radius.circular(10)),
-              items: items.map((String items) {
+              items: widget.items.map((String item) {
                 return DropdownMenuItem(
-                  value: items,
-                  child: Text(items),
+                  value: item,
+                  child: Text(item),
                 );
               }).toList(),
               onChanged: (String? newValue) {
-                setState(() {
-                  dropdownvalue = newValue!;
-                });
+                if (newValue != null) {
+                  // Update the selected value
+                  setState(() {
+                    dropdownvalue = newValue;
+                  });
+                }
               },
-
             ),
           ),
         ],

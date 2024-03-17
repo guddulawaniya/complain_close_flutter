@@ -11,6 +11,10 @@ class complaine_form extends StatefulWidget {
 }
 
 class _complaine_formState extends State<complaine_form> {
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,22 +50,26 @@ class _complaine_formState extends State<complaine_form> {
                         text: "Party Code ",
                         hinttext: 'Enter party Code',
                       ),
-                      CustomAutocomplete(
-                        text: 'Party name',
-                        hinttext: 'Select',
-                      ),
-                      CustomAutocomplete(
-                        text: 'Brand',
-                        hinttext: 'Select',
-                      ),
-                      CustomAutocomplete(
-                        text: 'City',
-                        hinttext: 'Select',
-                      ),
-                      CustomAutocomplete(
-                        text: 'State',
-                        hinttext: 'Select',
-                      ),
+                      // CustomAutocomplete(
+                      //   text: 'Party name',
+                      //   hinttext: 'Select',
+                      //   dataList: [],
+                      // ),
+                      // CustomAutocomplete(
+                      //   text: 'Brand',
+                      //   hinttext: 'Select',
+                      //   dataList: [],
+                      // ),
+                      // CustomAutocomplete(
+                      //   text: 'City',
+                      //   hinttext: 'Select',
+                      //   dataList: [],
+                      // ),
+                      // CustomAutocomplete(
+                      //   text: 'State',
+                      //   hinttext: 'Select',
+                      //   dataList: [],
+                      // ),
                       CustomTextView(
                         text: "Address ",
                         hinttext: 'Enter address',
@@ -74,10 +82,11 @@ class _complaine_formState extends State<complaine_form> {
                         text: "TDS OUT ",
                         hinttext: 'Enter TDS OUT',
                       ),
-                      CustomAutocomplete(
-                        text: 'Description',
-                        hinttext: 'Select',
-                      ),
+                      // CustomAutocomplete(
+                      //   text: 'Description',
+                      //   hinttext: 'Select',
+                      //   dataList: [],
+                      // ),
                     ],
                   ),
                 ),

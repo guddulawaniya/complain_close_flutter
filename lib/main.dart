@@ -7,6 +7,7 @@ import 'package:complain_close_flutter/complain_form.dart';
 import 'package:complain_close_flutter/login.dart';
 import 'package:complain_close_flutter/otp_verification.dart';
 import 'package:complain_close_flutter/uploadData.dart';
+import 'package:complain_close_flutter/webview_page.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Complain Close',
-      initialRoute: "splash",
+      initialRoute: "/mainepage",
       routes: {
         'splash': (context) => splashScreen(),
         '/login': (context) => loginpage(),
@@ -45,13 +46,12 @@ class MyHomePage extends StatelessWidget {
 
   final String title;
 
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: DefaultTabController(
-        length: 3,
+        length: 2,
         child: Scaffold(
           body: TabBarView(
             children: [
@@ -92,14 +92,6 @@ class MyHomePage extends StatelessWidget {
                 );
               },
             ),
-            actions: [
-              Padding(
-                padding: EdgeInsets.only(right: 10.0),
-                child: CircleAvatar(
-                  child: Text('CD'), // Text for Complain Dashboard
-                ),
-              ),
-            ],
           ),
           drawer: Drawer(
             backgroundColor: Colors.white,
@@ -187,7 +179,7 @@ class MyHomePage extends StatelessWidget {
                     // Handle navigation for item 2
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => total_complain()),);
+                      MaterialPageRoute(builder: (context) => webview()),);
                   },
                 ),
                 // Add more list items as needed

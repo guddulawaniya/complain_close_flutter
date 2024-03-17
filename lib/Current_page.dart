@@ -77,97 +77,91 @@ class _currentpageState extends State<currentpage> {
                 //   // print('Item $index clicked');
                 //   // Fluttertoast.showToast(msg: "item : $index", toastLength: Toast.LENGTH_LONG);
               },
-
               
-               child: Column(
-                 children: [
-                   if(dataList[index]["compliant_no"] != null && dataList[index]["compliant_no"].toString().isNotEmpty)
-                     Flexible(
-                       child: Card(
-                         shape: RoundedRectangleBorder(
-                           borderRadius: BorderRadius.circular(5.0),
-                         ),
-                       
-                         elevation: 4,
-                         margin: const EdgeInsets.symmetric(
-                           horizontal: 16,
-                           vertical: 16,
-                         ),
-                         surfaceTintColor: Colors.white,
-                         color: Colors.white,
-                         child: Padding(
-                           padding: const EdgeInsets.all(8.0),
-                           child: Row(
-                             children: [
-                               Column(
+               child: Container(
+                 child: Card(
+                   shape: RoundedRectangleBorder(
+                     borderRadius: BorderRadius.circular(5.0),
+                   ),
+
+                   elevation: 4,
+                   margin: const EdgeInsets.symmetric(
+                     horizontal: 16,
+                     vertical: 16,
+                   ),
+                   surfaceTintColor: Colors.white,
+                   color: Colors.white,
+                   child: Padding(
+                     padding: const EdgeInsets.all(8.0),
+                     child: Row(
+                       children: [
+                         Column(
+                           children: [
+                             const Text(
+                               "Status",
+                               style: TextStyle(
+                                 fontWeight: FontWeight.bold,
+                                 color: Colors.black87,
+                                 fontSize: 14,
+                               ),
+                             ),
+                             Card(
+                               shape: RoundedRectangleBorder(
+                                 borderRadius: BorderRadius.circular(8.0),
+                               ),
+                               elevation: 4,
+                               margin: const EdgeInsets.symmetric(
+                                 horizontal: 16,
+                                 vertical: 8,
+                               ),
+                               surfaceTintColor: Colors.white,
+                               color: Colors.white,
+                               child: Column(
                                  children: [
-                                   const Text(
-                                     "Status",
-                                     style: TextStyle(
-                                       fontWeight: FontWeight.bold,
-                                       color: Colors.black87,
-                                       fontSize: 14,
+                                   Container(
+                                     padding: const EdgeInsets.only(
+                                         left: 5,
+                                         top: 2,
+                                         right: 5,
+                                         bottom: 2),
+                                     decoration: const BoxDecoration(
+                                         color: Colors.orangeAccent,
+                                         borderRadius: BorderRadius.only(
+                                           topLeft: Radius.circular(10),
+                                           topRight: Radius.circular(10),
+                                         )),
+                                     // margin: EdgeInsets.only(top: 5),
+                                     child: const Text(
+                                       "Pending",
+                                       style: TextStyle(color: Colors.white),
                                      ),
                                    ),
-                                   Card(
-                                     shape: RoundedRectangleBorder(
-                                       borderRadius: BorderRadius.circular(8.0),
-                                     ),
-                                     elevation: 4,
-                                     margin: const EdgeInsets.symmetric(
-                                       horizontal: 16,
-                                       vertical: 8,
-                                     ),
-                                     surfaceTintColor: Colors.white,
-                                     color: Colors.white,
-                                     child: Column(
-                                       children: [
-                                         Container(
-                                           padding: const EdgeInsets.only(
-                                               left: 5,
-                                               top: 2,
-                                               right: 5,
-                                               bottom: 2),
-                                           decoration: const BoxDecoration(
-                                               color: Colors.orangeAccent,
-                                               borderRadius: BorderRadius.only(
-                                                 topLeft: Radius.circular(10),
-                                                 topRight: Radius.circular(10),
-                                               )),
-                                           // margin: EdgeInsets.only(top: 5),
-                                           child: const Text(
-                                             "Pending",
-                                             style: TextStyle(color: Colors.white),
-                                           ),
-                                         ),
-                                         const SizedBox(
-                                             height: 40,
-                                             width: 40,
-                                             child: Icon(Icons.update))
-                                       ],
-                                     ),
-                                   )
+                                   const SizedBox(
+                                       height: 40,
+                                       width: 40,
+                                       child: Icon(Icons.update))
                                  ],
                                ),
-                               Flexible(
-                                 child: Column(
-                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                   children: [
+                             )
+                           ],
+                         ),
+                         Flexible(
+                           child: Column(
+                             crossAxisAlignment: CrossAxisAlignment.start,
+                             children: [
 
-                                     Text('Complaint No : ${dataList[index]["compliant_no"]}', overflow: TextOverflow.ellipsis,),
-                                     Text('Date : ${dataList[index]["create_date"]}', overflow: TextOverflow.ellipsis),
-                                     Text('Party Name : ${dataList[index]['party_id']}', overflow: TextOverflow.ellipsis),
-                                     Text('Address : ${dataList[index]['address']}', maxLines: 1, overflow: TextOverflow.ellipsis),
+                               Text('Complaint No : ${dataList[index]["compliant_no"]}', overflow: TextOverflow.ellipsis,),
+                               Text('Date : ${dataList[index]["create_date"]}', overflow: TextOverflow.ellipsis),
+                               Text('Party Name : ${dataList[index]['party_id']}', overflow: TextOverflow.ellipsis),
+                               Text('Address : ${dataList[index]['address']}', maxLines: 1, overflow: TextOverflow.ellipsis),
 
-                                   ],
-                                 ),
-                               ),
                              ],
                            ),
                          ),
-                       ),
+                       ],
                      ),
-                 ],
+                   ),
+                 ),
                ),
             );
           },
